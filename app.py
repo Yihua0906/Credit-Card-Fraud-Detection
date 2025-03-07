@@ -5,7 +5,7 @@ import pandas as pd
 app = Flask(__name__)
 
 # 載入訓練好的模型與標準化器
-rf_model = joblib.load("fraud_detection_model.pkl")
+rf_model = joblib.load("fraud_detection_model_rf.pkl")
 scaler = joblib.load("scaler.pkl")
 
 @app.route('/predict', methods=['POST'])
