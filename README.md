@@ -18,7 +18,6 @@ Matplotlib & Seaborn：用於可視化數據和評估結果。
 
 Joblib：用於儲存和載入訓練好的模型。
 
-安裝要求
 
 ## 安裝要求
 安裝 Python 3.6 及以上版本。
