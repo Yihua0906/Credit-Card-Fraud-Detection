@@ -51,6 +51,43 @@ python model.py
 ### 模型推斷：
 
 使用訓練好的模型進行預測，可以在 predict.py 中找到代碼範本來對新交易進行預測。
+
+### API 接口使用：
+
+本系統提供了一個 API 接口，允許外部系統通過 HTTP 請求進行詐欺預測。
+
+#### 啟動 Flask 伺服器：
+首先，確保你已經訓練並儲存了模型。然後執行以下命令啟動 Flask 伺服器：
+python app.py
+伺服器將在 http://127.0.0.1:5000/ 運行。
+
+#### 請求格式：
+該 API 支援 POST 請求，請將交易資料以 JSON 格式發送到 /predict 端點。請求的資料格式如下：
+
+json
+{
+  "input": [
+    {
+      "V1": -0.1743,
+      "V2": 0.2345,
+      "V3": -0.3456,
+      ...
+      "Time": 123456,
+      "Amount": 100.50
+    }
+  ]
+}
+
+#### 響應格式：
+API 將返回以下格式的 JSON 響應，告訴您該交易是否為詐欺：
+
+json
+{
+  "prediction": 1
+}
+
+prediction: 1 表示詐欺交易，0 表示正常交易。
+
 ### 評估指標：
 
 該系統的性能通過以下指標來評估：
@@ -60,4 +97,5 @@ AUPRC（Average Precision-Recall Curve）：衡量模型在處理不平衡數據
 ROC-AUC（Receiver Operating Characteristic - Area Under Curve）：評估模型區分正負類的能力。
 ## 相關文獻
 Dal Pozzolo, A., Caelen, O., Johnson, R. A., & Bontempi, G. (2015). Calibrating Probability with Undersampling for Unbalanced Classification. In Symposium on Computational Intelligence and Data Mining (CIDM).
+
 Dal Pozzolo, A., Caelen, O., Le Borgne, Y.-A., Waterschoot, S., & Bontempi, G. (2014). Learned lessons in credit card fraud detection from a practitioner perspective. Expert systems with applications, 41(10), 4915-4928.
